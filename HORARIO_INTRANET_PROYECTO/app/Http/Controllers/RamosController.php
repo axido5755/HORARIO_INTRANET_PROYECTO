@@ -82,4 +82,11 @@ class RamosController extends Controller
     {
         //
     }
+
+    public function getramos()
+    {
+        
+        $datos['Ramos'] = Ramos::all();
+        return view('welcome', $Ramos);
+    }
 }
