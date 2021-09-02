@@ -113,6 +113,8 @@ class RamosController extends Controller
                 }
         }
         }
+
+        return redirect('Horario',compact('HorarioMatrix'));
     }
 
     public function dia($dia){

@@ -13,6 +13,9 @@ use App\Http\Controllers\RamosController;
 |
 */
 
+Route::get('/Horario', function () {
+    return view('Horario');
+});
 
 Route::get('/' , '\App\Http\Controllers\RamosController@getramos');
 
