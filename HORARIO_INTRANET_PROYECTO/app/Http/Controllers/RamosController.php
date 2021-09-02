@@ -48,7 +48,7 @@ class RamosController extends Controller
 
         $Asignatura         = $name[0];
         $Seccion            = $name[1];
-        $Nombreasignatura   = $name[2];
+        $Nombreasignatura   = explode(".",$name[2])[0];
 
         $Horario1x = explode(":",$name[3],2);
         if($Horario1x[0] != ""){
@@ -56,7 +56,7 @@ class RamosController extends Controller
             $Horario1e          = substr(explode(",",$Horario1x[1])[0],-5);
             $Horario1s          = substr(explode(",",$Horario1x[1])[1],0,5);
 
-        $Horario1d = $this->dia($Horario1d);
+            $Horario1d = $this->dia($Horario1d);
             $Horario1e = $this->horaI($Horario1e);
             try {
                 $Horario1s = $this->horaf($Horario1s);
@@ -65,10 +65,10 @@ class RamosController extends Controller
             }
 
             do {
-                if( $HorarioMatrix[$Horario1d-1][$Horario1e-1] = "-"){
-                    $HorarioMatrix[$Horario1d-1][$Horario1e-1] = $Asignatura ;
+                if( $HorarioMatrix[$Horario1d-1][$Horario1e-1] == "-"){
+                    $HorarioMatrix[$Horario1d-1][$Horario1e-1] = $Asignatura." ".$Seccion." ".$Nombreasignatura;
                     }else{
-                    $HorarioMatrix[$Horario1d-1][$Horario1e-1] = $HorarioMatrix[$Horario1d-1][$Horario1e-1].','. $Asignatura ;
+                    $HorarioMatrix[$Horario1d-1][$Horario1e-1] = $HorarioMatrix[$Horario1d-1][$Horario1e-1].','. $Asignatura." ".$Seccion." ".$Nombreasignatura ;
                     }
 
             $Horario1e = $Horario1e + 1;
@@ -90,10 +90,10 @@ class RamosController extends Controller
             }
 
             do {
-            if( $HorarioMatrix[$Horario2d-1][$Horario2e-1] = "-"){
-                $HorarioMatrix[$Horario2d-1][$Horario2e-1] = $Asignatura ;
+            if( $HorarioMatrix[$Horario2d-1][$Horario2e-1] == "-"){
+                $HorarioMatrix[$Horario2d-1][$Horario2e-1] = $Asignatura." ".$Seccion." ".$Nombreasignatura ;
                 }else{
-                $HorarioMatrix[$Horario2d-1][$Horario2e-1] = $HorarioMatrix[$Horario2d-1][$Horario2e-1].','. $Asignatura ;
+                $HorarioMatrix[$Horario2d-1][$Horario2e-1] = $HorarioMatrix[$Horario2d-1][$Horario2e-1].','. $Asignatura." ".$Seccion." ".$Nombreasignatura ;
                 }
             $Horario2e = $Horario2e + 1;
             } while ($Horario2e != $Horario2s+1);
@@ -114,19 +114,16 @@ class RamosController extends Controller
             }
 
             do {
-            if( $HorarioMatrix[$Horario3d-1][$Horario3e-1]= "-"){
-                $HorarioMatrix[$Horario3d-1][$Horario3e-1] = $Asignatura ;
-                echo $p."nuevo";
-                }else{
-                $HorarioMatrix[$Horagitio3d-1][$Horario3e-1] = $HorarioMatrix[$Horario3d-1][$Horario3e-1].','. $Asignatura ;
-                
-                }
+            if( $HorarioMatrix[$Horario3d-1][$Horario3e-1] == "-"){
+                $HorarioMatrix[$Horario3d-1][$Horario3e-1] = $Asignatura." ".$Seccion." ".$Nombreasignatura ;
+            }else{
+                $HorarioMatrix[$Horario3d-1][$Horario3e-1] = $HorarioMatrix[$Horario3d-1][$Horario3e-1].','. $Asignatura." ".$Seccion." ".$Nombreasignatura ;
+            }
             $Horario3e = $Horario3e + 1;
-            
             } while ($Horario3e != $Horario3s+1);
         }
         }
-        dd($Horario1e);
+
         return view('Horario',Compact('HorarioMatrix'));
     }
 
@@ -172,7 +169,7 @@ class RamosController extends Controller
                     $horizontal = 2;
                     break;
     
-                case '9:40':
+                case '09:40':
                     $horizontal = 3;
                     break;
     

@@ -32,8 +32,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col"></th>
-                <th scope="col">Lunes</th>
+                <th ></th>
+                <th scope="col" >Lunes</th>
                 <th scope="col">Martes</th>
                 <th scope="col">Miercoles</th>
                 <th scope="col">Jueves</th>
@@ -47,7 +47,7 @@
                 @switch($i)
 
                     @case(0)
-                    <th scope="row" class="table-warning">8:10 - 8:50</th>
+                    <th scope="row" class="table-warning" width="6%">8:10 - 8:50</th>
                         @break
 
                     @case(1)
@@ -122,7 +122,18 @@
                 @endswitch
 
                 @for ($j = 0; $j < 5; $j++)
-                    <td>{{$HorarioMatrix[$j][$i]}}</td>
+                    <td>
+                    
+                        <?php
+                        $aux = explode(",",$HorarioMatrix[$j][$i]);
+                        $tamaño = count($aux);
+                            ?>
+
+                            @foreach ($aux as $item)
+                              {{$item}}
+                                <br>
+                              @endforeach
+                    </td>
                 @endfor
 
             </tr>
