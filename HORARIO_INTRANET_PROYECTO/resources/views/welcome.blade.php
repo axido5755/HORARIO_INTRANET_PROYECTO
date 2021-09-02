@@ -27,6 +27,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 </head>
+<body>
 <form action="{{url('/ramos')}}" method="post" enctype="multipart/form-data">
     @csrf
 
@@ -65,5 +66,5 @@
 
     <input type="submit" value="Enviar" id="enviar" class="btn btn-primary">
 </form>
-
+</body>
 </html>
