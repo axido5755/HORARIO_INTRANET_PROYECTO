@@ -27,6 +27,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 </head>
+<form action="{{url('/ramos')}}" method="post" enctype="multipart/form-data">
+    @csrf
+
     <body class="antialiased">
     <table class="table">
   <thead>
@@ -41,20 +44,26 @@
     </tr>
   </thead>
   <tbody>
-  <tr>
-      @foreach ($Ramos as $Ramos)
-          hola
-      @endforeach
-                    <td class="center" style="vertical-align:middle;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                    <td class="center" style="vertical-align:middle;">210020</td>
-                    <td class="center" style="vertical-align:middle;">1</td>
-                    <td class="center" style="vertical-align:middle;">35</td>
-                    <td class="center" style="vertical-align:middle;">0</td>
-                    <td style="vertical-align:middle;">QUÍMICA GENERAL. &nbsp;-  ACUÑA ELGUETA ,JOSÉ FRANCISCO</td>
-                    <td class="center" style="vertical-align:middle;">TEO: LU 11:10 12:30                               <br>A203AC                        </td>
-                    <td class="center" style="vertical-align:middle;">TEO: JU 08:10 11:00                               <br>A308AC                        </td>
-                </tr>
+    @foreach ($Ramos as $Ramos)
+    
+    <tr>
+
+                    <td class="center" style="vertical-align:middle;"><input class="form-check-input" type="checkbox" id="check[]" name="check[]" value="{{$Ramos->Asignatura}}/{{$Ramos->Seccion}}/{{$Ramos->Nombreasignatura}}/{{$Ramos->Horario1}}/{{$Ramos->Horario2}}/{{$Ramos->Horario3}}"></td>
+                    <td class="center" style="vertical-align:middle;">{{$Ramos->Asignatura}}</td>
+                    <td class="center" style="vertical-align:middle;">{{$Ramos->Seccion}}</td>
+                    <td class="center" style="vertical-align:middle;">{{$Ramos->Cupos}}</td>
+                    <td class="center" style="vertical-align:middle;">{{$Ramos->Inscritos}}</td>
+                    <td class="center" style="vertical-align:middle;">{{$Ramos->Nombreasignatura}}</td>
+                    <td class="center" style="vertical-align:middle;">{{$Ramos->Horario1}}</td>
+                    <td class="center" style="vertical-align:middle;">{{$Ramos->Horario2}}</td>
+                    <td class="center" style="vertical-align:middle;">{{$Ramos->Horario3}}</td>
+    </tr>
+    @endforeach
   </tbody>
-</table>
+    </table>
     </body>
+
+    <input type="submit" value="Enviar" id="enviar" class="btn btn-primary">
+</form>
+
 </html>

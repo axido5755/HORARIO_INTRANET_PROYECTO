@@ -15,3 +15,5 @@ use App\Http\Controllers\RamosController;
 
 
 Route::get('/' , '\App\Http\Controllers\RamosController@getramos');
+
+Route::resource('ramos', RamosController::class);
