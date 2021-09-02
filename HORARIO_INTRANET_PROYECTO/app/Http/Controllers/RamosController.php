@@ -109,7 +109,7 @@ class RamosController extends Controller
             if( $HorarioMatrix[$Horario3d-1][$Horario3e-1][$Horario3s-1] = "-"){
                 $HorarioMatrix[$Horario3d-1][$Horario3e-1][$Horario3s-1] = $Asignatura ;
                 }else{
-                $HorarioMatrix[$Horario3d-1][$Horario3e-1][$Horario3s-1] = $HorarioMatrix[$Horario3d-1][$Horario3e-1][$Horario3s-1].','. $Asignatura ;
+                $HorarioMatrix[$Horagitio3d-1][$Horario3e-1][$Horario3s-1] = $HorarioMatrix[$Horario3d-1][$Horario3e-1][$Horario3s-1].','. $Asignatura ;
                 }
         }
         }
